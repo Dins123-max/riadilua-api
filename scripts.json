@@ -1,15 +1,15 @@
 {
   "scripts": [
     {
-      "name": "Auto Miner (CPRP)",
-      "desc": "Otomatisasi penambangan terbaru dari web.",
-      "code": "print('Auto Miner versi web dijalankan!'); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} Fitur Miner Update!', -1);"
+      "name": "Miner Helper (CPRP)",
+      "desc": "Otomatisasi penambangan, lebur, dan jual ore.",
+      "code": "local imgui = require('mimgui'); local ffi = require('ffi'); local sampev = require('samp.events'); local scriptEnabled = false; local renderWindow = imgui.new.bool(false); local isSyncingInv = false; local serverOreStock = 0; local previousOreStock = -1; local refinedOreCount = 0; local cooldownTime = 0; local lastCooldownCheck = 0; local autoZoneActive = imgui.new.bool(true); local currentZoneName = ''; local lastZoneName = ''; local zones = { { name = 'Lebur Ore', x = 1953.17, y = -1794.39, z = 2036.24, radius = 2.5, cmd = '/leburore' }, { name = 'Ambil Ore', x = 1955.41, y = -1770.93, z = 2040.40, radius = 2.5, cmd = '/ambilore' } }; local autoSellActive = imgui.new.bool(true); local sellThread = nil; local sellZone = { x = 1938.16, y = -1770.86, z = 2040.40, radius = 3.0, cmd = '/jualore' }; local sellZoneTimer = 0; local isInsideSellZone = false; function startAutoSellThread() if sellThread and sellThread:status() ~= 'dead' then return end; sellThread = lua_thread.create(function() while scriptEnabled and autoSellActive[0] do sampSendChat('/jualore'); local timer = 0; while timer < 45000 and scriptEnabled and autoSellActive[0] do wait(100); timer = timer + 100; end; end; end); end; sampRegisterChatCommand('miner', function() scriptEnabled = not scriptEnabled; renderWindow[0] = scriptEnabled; if scriptEnabled then sampAddChatMessage('{00FF00}[Miner Helper]: {FFFFFF}Script diaktifkan!', -1); isSyncingInv = true; sampSendChat('/inv'); if autoSellActive[0] then startAutoSellThread(); end; else sampAddChatMessage('{FF0000}[Miner Helper]: {FFFFFF}Script dinonaktifkan!', -1); currentZoneName = ''; lastZoneName = ''; end; end); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} Miner Helper berhasil dimuat dari web!', -1);"
     },
     {
-      "name": "Trucker Helper",
-      "desc": "Restock bisnis otomatis.",
-      "code": "print('Trucker Helper dijalankan!'); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} Trucker Helper Aktif!', -1);"
+      "name": "AutoLumber (CPRP)",
+      "desc": "Otomatisasi penebangan kayu, potong, slice, dan push level.",
+      "code": "script_name('AutoLumber'); script_author('Riadi & Gemini'); local imgui = require('mimgui'); local script_enabled = false; local running_potong = imgui.new.bool(false); local main_window_state = imgui.new.bool(false); sampRegisterChatCommand('alum', function() script_enabled = not script_enabled; if script_enabled then main_window_state[0] = true; sampAddChatMessage('{00FF00}[AutoLumber]{FFFFFF} Script diaktifkan dari web!', -1); else script_enabled = false; main_window_state[0] = false; sampAddChatMessage('{FF0000}[AutoLumber]{FFFFFF} Script dimatikan!', -1); end; end); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} AutoLumber berhasil dimuat dari web!', -1);"
     }
   ]
 }
-w
+
