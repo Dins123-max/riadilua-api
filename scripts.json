@@ -1,0 +1,15 @@
+{
+  "scripts": [
+    {
+      "name": "Auto Miner (CPRP)",
+      "desc": "Otomatisasi penambangan terbaru dari web.",
+      "code": "print('Auto Miner versi web dijalankan!'); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} Fitur Miner Update!', -1);"
+    },
+    {
+      "name": "Trucker Helper",
+      "desc": "Restock bisnis otomatis.",
+      "code": "print('Trucker Helper dijalankan!'); sampAddChatMessage('{00FF00}[RiadiLua]{FFFFFF} Trucker Helper Aktif!', -1);"
+    }
+  ]
+}
+w
